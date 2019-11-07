@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
 // app.use("/campgrounds", campgroundRoutes);
 
 app.get("/", (req, res) => {
-    res.send("test");
+    res.render("landing");
 });
 
 
