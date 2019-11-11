@@ -7,9 +7,9 @@ const LocalStrategy = require('passport-local');
 const Tournament = require("./models/Tournament");
 const Player = require("./models/Player");
 const User = require("./models/User");
-// const commentRoutes = require("./routes/comments");
-// const campgroundRoutes = require("./routes/campgrounds");
-// const indexRoutes = require("./routes/index");
+const playerRoutes = require("./routes/player");
+const tournamentRoutes = require("./routes/tournament");
+const indexRoutes = require("./routes/index");
 const methodOverride = require('method-override');
 const flash = require("connect-flash");
 
@@ -40,15 +40,13 @@ app.use(function(req, res, next) {
     next();
 });
 
-// app.use(indexRoutes);
-// app.use("/campgrounds/:id/comments", commentRoutes);
-// app.use("/campgrounds", campgroundRoutes);
+app.use(indexRoutes);
+app.use("/players", playerRoutes);
+app.use("/tournaments", tournamentRoutes);
 
 app.get("/", (req, res) => {
-    res.render("landing");
+    res.redirect("/players");
 });
-
-
 
 
 app.listen(3003, ()=>{

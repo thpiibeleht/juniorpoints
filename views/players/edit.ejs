@@ -1,0 +1,23 @@
+<% include ../partials/header.ejs %>
+
+<div class="container">
+    <div class="col">
+        <h1 style="text-align: center;">Edit <%= player.name %></h1>
+        <div style="width:30%; margin: 40px auto;">
+            <form action="/players/<%= player._id %>?_method=put" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" value="<%= player.name %>" name="name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" value="<%= player.yearOfBirth %>" name="year">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/players">Back to Players</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

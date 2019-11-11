@@ -1,3 +1,15 @@
 <% include partials/header.ejs %>
 <h1>This is the Landing Page</h1>
+<div class="row" style="display:flex; flex-wrap: wrap;">
+    <% players.forEach((player) =>{ %>
+        <div class="col-lg-3 col-md-6">
+            <div class="img-thumbnail">
+                <div class="caption text-center">
+                    <h4><a href="/players/<%= player._id %>"><%= player["name"] %></a></h4>
+                </div>
+            </div>
+
+        </div>
+    <% }) %>
+</div>
 <% include partials/footer.ejs%>

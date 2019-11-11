@@ -9,7 +9,7 @@ Juuniormängijatele antakse reitingupunkte järgneva skaala põhjal:
      Roheline meistripall (RMP) 3 punkti 	
      Kuldne meistripall (KMP)   5 punkti
      	
-2.Eesti meistrivõistlused paaridele (EMV) 	
+2. Eesti meistrivõistlused paaridele (EMV) 	
       1-6. Koht          12 punkti	
       7-13. Koht         8 punkti	
      14-20. Koht         4 punkti	
