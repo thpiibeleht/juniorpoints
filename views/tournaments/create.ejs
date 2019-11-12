@@ -1,0 +1,29 @@
+<% include ../partials/header.ejs %>
+
+<div class="container">
+    <div class="col">
+        <h1 style="text-align: center;">Add a New Tournament</h1>
+        <div style="width:30%; margin: 40px auto;">
+            <form action="/tournaments" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="name" name="tournament[name]">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" cols="50" placeholder="results" name="tournament[results]"></textarea>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="masterpoint schema" name="tournament[masterPointAwards]">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="juniorpoint schema" name="tournament[juniorPointAwards]">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/tournaments">Back to Tournaments</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

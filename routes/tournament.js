@@ -1,5 +1,7 @@
 const express = require("express");
 const Tournament = require("../models/Tournament");
+const Player = require("../models/Player");
+
 
 const router = express.Router();
 const middleware = require('../config/index');
@@ -17,15 +19,16 @@ router.get('/', (req, res) => {
 
 // Name, Date, Results, MP awards, JP awards
 router.post("/", middleware.isLoggedIn, (req, res) => {
-    const name = req.body.name;
-    const results = req.body.results;
-    const masterPointAwards = req.body.masterPointAwards;
-    const juniorPointAwards = req.body.juniorPointAwards;
+    const tr = req.body.tournament;
+    const name = tr.name;
+    const results = parseResults(tr.results);
+    const masterPointAwards = parseMPAwardSchema(tr.masterPointAwards);
+    const juniorPointAwards = parseJPAwardSchema(tr.juniorPointAwards);
 
     const tournament = new Tournament(
         {
             name: name,
-            date: new Date.now(),
+            date: new Date(),
             results: results,
             masterPointAwards: masterPointAwards,
             juniorPointAwards: juniorPointAwards,
@@ -36,7 +39,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
             console.log(err);
         }
         else {
-            req.flash("success", "Player added!");
+            req.flash("success", "Tournament added!");
             res.redirect("/tournaments")
         }
     });
@@ -86,5 +89,36 @@ router.delete("/:id", middleware.isLoggedIn, (req, res) => {
         }
     })
 });
+
+function parseJPAwardSchema(schemaString) {
+    let schema = [3,2,1];
+
+    return schema;
+}
+
+function parseMPAwardSchema(schemaString) {
+    let schema = [3,2,1];
+
+    return schema;
+}
+
+function parseResults(resultString) {
+    let results = [];
+
+    resultString.split("\n").forEach(function(row) {
+        let pieces = row.split(",");
+        let result = {};
+        Player.findOne({name: pieces[0]}, (err, foundPlayer) => {
+            result.player = foundPlayer._id;
+        });
+        result.place = parseInt(pieces[1]);
+        if (pieces.length === 3) {
+            result.score = pieces[2];
+        }
+        results.push(result);
+    });
+
+    return results;
+}
 
 module.exports = router;

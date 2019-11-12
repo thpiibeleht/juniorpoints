@@ -8,7 +8,7 @@ const tournamentSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Player"
         },
-        score: Number,
+        score: String,
         place: {type: Number, required: true},
         }
     ],

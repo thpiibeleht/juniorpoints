@@ -4,7 +4,8 @@
   "description": "A simple and elegant CRUD application for managing Estonian junior bridge players' rating points.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

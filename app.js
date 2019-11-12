@@ -13,7 +13,9 @@ const indexRoutes = require("./routes/index");
 const methodOverride = require('method-override');
 const flash = require("connect-flash");
 
-mongoose.connect("mongodb://localhost:27017/juniorpoints", {useNewUrlParser: true, useUnifiedTopology: true});
+const port = process.env.PORT || 3000;
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/juniorpoints", {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
@@ -49,7 +51,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(3003, ()=>{
+app.listen(port, ()=>{
     console.log("Juniorpoints app started")
 });
 
