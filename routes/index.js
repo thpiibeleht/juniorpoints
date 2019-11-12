@@ -7,23 +7,23 @@ const router = express.Router();
 
 // Register route, only use when necessary to add other admins
 
-router.get("/register", (req, res) => {
-    res.render("register");
-});
-
-router.post("/register", (req, res) => {
-    const newUser = new User({username: req.body.username});
-    User.register(newUser, req.body.password, (err, user) => {
-        if(err) {
-            req.flash("error", err.message);
-            return res.render("register");
-        }
-        passport.authenticate("local")(req, res, function () {
-            req.flash("success", "Welcome to Junior Points " + user.username);
-            res.redirect("/players");
-        });
-    });
-});
+// router.get("/register", (req, res) => {
+//     res.render("register");
+// });
+//
+// router.post("/register", (req, res) => {
+//     const newUser = new User({username: req.body.username});
+//     User.register(newUser, req.body.password, (err, user) => {
+//         if(err) {
+//             req.flash("error", err.message);
+//             return res.render("register");
+//         }
+//         passport.authenticate("local")(req, res, function () {
+//             req.flash("success", "Welcome to Junior Points " + user.username);
+//             res.redirect("/players");
+//         });
+//     });
+// });
 
 router.get("/login", (req, res) => {
     res.render("login");
