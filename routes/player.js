@@ -17,10 +17,10 @@ router.get('/', (req, res) => {
 
 
 router.post("/", middleware.isLoggedIn, (req, res) => {
-    const name = req.body.name;
-    const year = req.body.year;
 
-    const player = new Player({name: name, yearOfBirth: year});
+    const pl = req.body.player;
+
+    const player = new Player({name: pl.name, yearOfBirth: pl.year});
     player.save(function(err, newPlayer) {
         if(err) {
             req.flash("error", "Something went wrong");
