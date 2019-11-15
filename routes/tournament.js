@@ -24,6 +24,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     const results = parseResults(tr.results);
     const masterPointAwards = parseMPAwardSchema(tr.masterPointAwards);
     const juniorPointAwards = parseJPAwardSchema(tr.juniorPointAwards);
+    const scoringType = tr.scoringType;
 
     const tournament = new Tournament(
         {
@@ -32,6 +33,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
             results: results,
             masterPointAwards: masterPointAwards,
             juniorPointAwards: juniorPointAwards,
+            scoringType: scoringType,
         });
     tournament.save(function(err, newTournament) {
         if(err) {
@@ -105,18 +107,6 @@ function parseMPAwardSchema(schemaString) {
 function parseResults(resultString) {
     let results = [];
 
-    resultString.split("\n").forEach(function(row) {
-        let pieces = row.split(",");
-        let result = {};
-        Player.findOne({name: pieces[0]}, (err, foundPlayer) => {
-            result.player = foundPlayer._id;
-        });
-        result.place = parseInt(pieces[1]);
-        if (pieces.length === 3) {
-            result.score = pieces[2];
-        }
-        results.push(result);
-    });
 
     return results;
 }

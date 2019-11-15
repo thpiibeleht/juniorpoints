@@ -13,7 +13,7 @@ const indexRoutes = require("./routes/index");
 const methodOverride = require('method-override');
 const flash = require("connect-flash");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3003;
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/juniorpoints", {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));

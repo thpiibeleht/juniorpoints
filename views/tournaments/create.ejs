@@ -3,13 +3,24 @@
 <div class="container">
     <div class="col">
         <h1 style="text-align: center;">Add a New Tournament</h1>
-        <div style="width:30%; margin: 40px auto;">
+        <div style="width:70%; margin: 40px auto;">
             <form action="/tournaments" method="post">
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="name" name="tournament[name]">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" rows="5" cols="50" placeholder="results" name="tournament[results]"></textarea>
+                    <label for="type">Tournament type</label>
+                    <input type="text" list="trn-types" name="type" id="type"/>
+                    <datalist id="trn-types">
+                        <option data-value="emvp">Eesti MV paaridele</option>
+                        <option data-value="evkmv">Eesti võistkondlikud MV</option>
+                        <option data-value="ejpmv">Eesti juuniorpaaride MV</option>
+                        <option data-value="ekv">Eesti karikavõistlused</option>
+                        <option data-value="gp">GP</option>
+                        <option data-value="vk">Võistkondlik turniir</option>
+                        <option data-value="ejvkmv">Eesti juunioride võistkondlikud MV</option>
+                        <option data-value="ejimv">Eesti juunioride ind. MV</option>
+                    </datalist>
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="masterpoint schema" name="tournament[masterPointAwards]">
@@ -17,6 +28,28 @@
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="juniorpoint schema" name="tournament[juniorPointAwards]">
                 </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="scoring type" name="tournament[scoringType]">
+                </div>
+                <div class="form-group">
+                    <table id="add-player-table">
+                        <tr>
+                            <th>Player</th>
+                            <th>Total Place</th>
+                            <th>Total Score</th>
+                            <th>Masterp. from Sessions</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><button type="button" class="btn btn-danger rm-player">Remove Player</button></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn btn-success btn-lg btn-block" id="add-player-button">Add Player</button>
+                </div>
+
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>
                 </div>
